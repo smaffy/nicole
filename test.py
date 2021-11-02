@@ -147,13 +147,13 @@ def test_cake_repr():
     assert cake_medium.__repr__() == "Cake(medium)"
     assert cake_large.__repr__() == "Cake(large)"
 
-#
-# def test_factory_str_amount(factory):
-#     num = random.randint(3, 1000)
-#     for x in [(1, 1) for _ in range(2, num)]:
-#         factory.bake_cake(*x)
-#     assert str(factory) == f"Factory with {num - 2} cakes."
-#
+
+def test_factory_str_amount(factory):
+    num = random.randint(3, 1000)
+    for x in [(1, 1) for _ in range(2, num)]:
+        factory.bake_cake(*x)
+    assert str(factory) == f"Factory with {num - 2} cakes."
+
 
 def test_factory_str_single(factory):
     factory.bake_cake(1, 1)

@@ -1,5 +1,6 @@
 class Factory:
-    cakes = []
+    all_cakes = []
+    all_cakes_count = len(all_cakes)
 
     def __init__(self):
         pass
@@ -63,6 +64,7 @@ class Factory:
             self.cakes = cakes
         except:
             pass
+        self.all_cakes_count += count
         return count
 
     def get_last_cakes(self, n: int) -> list:
@@ -75,7 +77,7 @@ class Factory:
         return self.cakes
 
     def __str__(self):
-        num = len(self.cakes)
+        num = self.all_cakes_count
         if num == 1:
             return f'Factory with {num} cake.'
         if num > 1:
