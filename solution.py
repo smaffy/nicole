@@ -5,6 +5,7 @@ class Factory:
         pass
 
     def bake_cake(self, toppings: int, base: int) -> int:
+        cakes = []
         count = 0
         try:
             if base != toppings:
@@ -15,7 +16,7 @@ class Factory:
                     a = base // 5
                     while a:
                         baking = Cake(base, toppings, cake_type='large')
-                        self.cakes.append(baking)
+                        cakes.append(baking)
                         count += 1
                         a -= 1
                     if base % 5:
@@ -25,39 +26,43 @@ class Factory:
                             c = b // 2
                             while c:
                                 baking = Cake(base, toppings, cake_type='medium')
-                                self.cakes.append(baking)
+                                cakes.append(baking)
                                 count += 1
                                 c -= 1
                             if b % 2:
                                 baking = Cake(base, toppings, cake_type='basic')
-                                self.cakes.append(baking)
+                                cakes.append(baking)
                                 count += 1
                         else:
                             baking = Cake(base, toppings, cake_type='basic')
-                            self.cakes.append(baking)
+                            cakes.append(baking)
                             count += 1
                 else:
                     a = base // 2
                     while a:
                         baking = Cake(base, toppings, cake_type='medium')
-                        self.cakes.append(baking)
+                        cakes.append(baking)
                         count += 1
                         a -= 1
                     if base % 2:
                         baking = Cake(base, toppings, cake_type='basic')
-                        self.cakes.append(baking)
+                        cakes.append(baking)
                         count += 1
 
             else:
                 baking = Cake(base, toppings, cake_type='basic')
-                self.cakes.append(baking)
+                cakes.append(baking)
                 count += 1
+            self.cakes = cakes
         except:
             pass
         return count
 
     def get_last_cakes(self, n: int) -> list:
-        pass
+        last_cakes = []
+        if n > 0:
+            last_cakes = self.cakes[-n:]
+        return last_cakes
 
     def get_cakes_baked(self) -> list:
         return self.cakes

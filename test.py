@@ -37,13 +37,13 @@ def test_produce_cake_large_remaining_ingredients_produce_more_cakes(factory):
     assert factory.bake_cake(11, 11) != 2
 
 
-# def test_produce_cake_get_cakes(factory):
-#     factory.bake_cake(1, 1)
-#     assert len(factory.get_cakes_baked()) == 1
-#     cake = factory.get_last_cakes(1)[0]
-#     assert cake is not None
-#     assert type(cake) == Cake
-#
+def test_produce_cake_get_cakes(factory):
+    factory.bake_cake(1, 1)
+    assert len(factory.get_cakes_baked()) == 1
+    cake = factory.get_last_cakes(1)[0]
+    assert cake is not None
+    assert type(cake) == Cake
+
 #
 # def test_produce_cakes_get_last_cakes(factory):
 #     amount = factory.bake_cake(3, 3)
