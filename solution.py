@@ -6,62 +6,60 @@ class Factory:
     def bake_cake(self, toppings: int, base: int) -> int:
         cakes = []
         count = 0
-        try:
-            if base != toppings:
-                raise WrongIngredientsAmountException
 
-            if base > 1:
-                if base > 4:
+        if base != toppings:
+            raise WrongIngredientsAmountException
+
+        if base > 1:
+            if base > 4:
+                a = base // 5
+                while a:
+                    # cake_type='large'
+                    baking = Cake(5, 5)
+                    cakes.append(baking)
+                    count += 1
+                    a -= 1
+                if base % 5:
                     a = base // 5
-                    while a:
-                        # cake_type='large'
-                        baking = Cake(5, 5)
-                        cakes.append(baking)
-                        count += 1
-                        a -= 1
-                    if base % 5:
-                        a = base // 5
-                        b = base - a * 5
-                        if b > 1:
-                            c = b // 2
-                            while c:
-                                # cake_type='medium'
-                                baking = Cake(2, 2)
-                                cakes.append(baking)
-                                count += 1
-                                c -= 1
-                            if b % 2:
-                                # cake_type='basic'
-                                baking = Cake(1, 1)
-                                cakes.append(baking)
-                                count += 1
-                        else:
+                    b = base - a * 5
+                    if b > 1:
+                        c = b // 2
+                        while c:
+                            # cake_type='medium'
+                            baking = Cake(2, 2)
+                            cakes.append(baking)
+                            count += 1
+                            c -= 1
+                        if b % 2:
                             # cake_type='basic'
                             baking = Cake(1, 1)
                             cakes.append(baking)
                             count += 1
-                else:
-                    f = base // 2
-                    while f:
-                        # cake_type='medium'
-                        baking = Cake(2, 2)
-                        cakes.append(baking)
-                        count += 1
-                        f -= 1
-                    if base % 2:
+                    else:
                         # cake_type='basic'
                         baking = Cake(1, 1)
                         cakes.append(baking)
                         count += 1
-
             else:
-                # cake_type='basic'
-                baking = Cake(1, 1)
-                cakes.append(baking)
-                count += 1
-            self.cakes = cakes
-        except:
-            pass
+                f = base // 2
+                while f:
+                    # cake_type='medium'
+                    baking = Cake(2, 2)
+                    cakes.append(baking)
+                    count += 1
+                    f -= 1
+                if base % 2:
+                    # cake_type='basic'
+                    baking = Cake(1, 1)
+                    cakes.append(baking)
+                    count += 1
+
+        else:
+            # cake_type='basic'
+            baking = Cake(1, 1)
+            cakes.append(baking)
+            count += 1
+        self.cakes = cakes
         self.all_cakes_count += count
         return count
 
