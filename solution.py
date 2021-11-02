@@ -1,9 +1,7 @@
 class Factory:
-    all_cakes = []
-    all_cakes_count = len(all_cakes)
-
     def __init__(self):
-        pass
+        self.all_cakes = []
+        self.all_cakes_count = len(self.all_cakes)
 
     def bake_cake(self, toppings: int, base: int) -> int:
         cakes = []
@@ -89,14 +87,16 @@ class Cake:
     def __init__(self, base_amount, toppings_amount):
         self.base = base_amount
         self.toppings = toppings_amount
-        if base_amount == 5:
-            self.cake_type = 'large'
-        elif base_amount == 2:
-            self.cake_type = 'medium'
-        elif base_amount == 1:
-            self.cake_type = 'basic'
+        if base_amount in {1, 2, 5}:
+            if base_amount == 5:
+                self.cake_type = 'large'
+            elif base_amount == 2:
+                self.cake_type = 'medium'
+            elif base_amount == 1:
+                self.cake_type = 'basic'
         else:
             self.cake_type = None
+            raise WrongIngredientsAmountException('You have a problem')
 
     @property
     def type(self):
@@ -112,7 +112,14 @@ class Cake:
 
 class WrongIngredientsAmountException(Exception):
     """Wrong Ingredients Amount"""
+    def __init__(self, *args):
+        if args:
+            self.message = args[0]
+        else:
+            self.message = None
 
-    def __init__(self, message="Wrong Ingredients Amount"):
-        self.message = message
-        super().__init__(self.message)
+    def __str__(self):
+        if self.message:
+            return 'Wrong Ingredients Amount, {0} '.format(self.message)
+        else:
+            return 'Wrong Ingredients Amount'

@@ -120,12 +120,12 @@ def test_cake_large():
     large_cake = Cake(5, 5)
     assert large_cake.type == "large"
 
-#
-# def test_cake_wrong_ingredients_throws_exception():
-#     for i in {i for i in range(1000)} - {1, 2, 5}:
-#         with pytest.raises(WrongIngredientsAmountException):
-#             Cake(i, i)
-#
+
+def test_cake_wrong_ingredients_throws_exception():
+    for i in {i for i in range(1000)} - {1, 2, 5}:
+        with pytest.raises(WrongIngredientsAmountException):
+            Cake(i, i)
+
 
 def test_cake_equals():
     cake_basic_1 = Cake(1, 1)
