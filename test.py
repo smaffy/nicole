@@ -125,7 +125,7 @@ def test_cake_large():
 #     for i in {i for i in range(1000)} - {1, 2, 5}:
 #         with pytest.raises(WrongIngredientsAmountException):
 #             Cake(i, i)
-
+#
 
 def test_cake_equals():
     cake_basic_1 = Cake(1, 1)

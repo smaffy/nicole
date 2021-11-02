@@ -110,4 +110,7 @@ class Cake:
 
 class WrongIngredientsAmountException(Exception):
     """Wrong Ingredients Amount"""
-    pass
+
+    def __init__(self, message="Wrong Ingredients Amount"):
+        self.message = message
+        super().__init__(self.message)
